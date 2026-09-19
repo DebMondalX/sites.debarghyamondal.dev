@@ -29,7 +29,7 @@ def update(name: str) -> bool:
     )
     if slugs:
         items = "\n".join(
-            f'  <li><a href="/{name}/{s}/">'
+            f'  <li><a href="{s}/">'
             f"{html.escape(title_of(base / s / 'index.html', s))}</a></li>"
             for s in slugs
         )
@@ -37,7 +37,7 @@ def update(name: str) -> bool:
         items = "  <li><em>Nothing here yet.</em></li>"
     block = (
         "<ul>\n"
-        f'  <!-- one <li> per {kind}: <li><a href="/{name}/slug/">Title</a></li> -->\n'
+        f'  <!-- one <li> per {kind}: <li><a href="slug/">Title</a></li> -->\n'
         f"{items}\n"
         "</ul>"
     )
