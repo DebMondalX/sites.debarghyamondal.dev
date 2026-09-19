@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DSA + System Design Interview Prep</title>
+<meta name="description" content="A daily-habit interview prep plan: recursion, DP, fundamentals, graphs, and DDIA, tailored for a data engineering background.">
+<style>
+  html { background: #fff; color: #111; }
+  body { max-width: 40rem; margin: 4rem auto 6rem; padding: 0 1.25rem;
+         font: 1rem/1.6 Georgia, 'Times New Roman', serif; }
+  h1 { font-size: 1.5rem; font-weight: normal; margin: 0 0 0.25rem; }
+  h2 { font-size: 1.1rem; font-weight: normal; margin: 2.25rem 0 0.25rem; }
+  hr { border: 0; border-top: 1px solid #111; margin: 1.5rem 0; }
+  a { color: #111; }
+  .meta { font-style: italic; }
+  .sub { font-size: 0.875rem; color: #555; margin: 0 0 0.75rem; }
+  .progress { font-size: 0.875rem; font-variant-numeric: tabular-nums; }
+  .bar { height: 6px; background: #eee; border-radius: 3px; overflow: hidden; margin: 0.35rem 0 0; }
+  .bar > i { display: block; height: 100%; background: #111; width: 0%; transition: width .2s; }
+  ul.items { list-style: none; padding: 0; margin: 0.5rem 0 0; }
+  ul.items li { margin: 0.4rem 0; }
+  label { cursor: pointer; display: flex; gap: 0.55rem; align-items: baseline; }
+  input[type="checkbox"] { margin-top: 0.2rem; flex: none; }
+  .done { color: #999; text-decoration: line-through; }
+  footer { margin-top: 3rem; font-size: 0.875rem; }
+  button#reset { font: inherit; font-size: 0.8rem; background: none; border: 1px solid #ccc;
+                 border-radius: 4px; padding: 0.2rem 0.6rem; cursor: pointer; color: #555; }
+  button#reset:hover { border-color: #111; color: #111; }
+</style>
+</head>
+<body>
+
+<h1>DSA + System Design Interview Prep</h1>
+<p class="meta">Plan. <a href="../">Home</a>.</p>
+
+<hr>
+
+<p>
+  The goal is <strong>solid ground + a daily habit</strong>, not "finishing."
+  Fluency means solving a fresh medium in the pattern, cold, without the video.
+  Checkboxes save to this browser only (<code>localStorage</code>) — nothing is sent anywhere.
+</p>
+
+<div class="progress">
+  <span id="progress-text">0 / 0 checked</span>
+  <div class="bar"><i id="progress-bar"></i></div>
+</div>
+
+<hr>
+
+<h2>Daily process <span class="sub">(the part that makes it stick)</span></h2>
+<ul class="items" data-section="daily">
+  <li><label><input type="checkbox"><span>Fixed daily slot, protected like a meeting. Same time every day.</span></label></li>
+  <li><label><input type="checkbox"><span>2–3 problems/day sustained &gt; 10/day then burnout. Consistency is the metric.</span></label></li>
+  <li><label><input type="checkbox"><span><strong>20-minute rule:</strong> stuck for 20 min → read the solution, understand it, then re-solve from blank the same day.</span></label></li>
+  <li><label><input type="checkbox"><span>Maintain a "missed problems" list. Re-solve each ~3 days later from scratch (spaced repetition — this is where DP finally sticks).</span></label></li>
+  <li><label><input type="checkbox"><span>After solving: write one line — what pattern/trick unlocked it. Reviewing these later &gt; re-solving.</span></label></li>
+  <li><label><input type="checkbox"><span>A skipped day is the failure mode. If overloaded, cut to ONE easy problem — never zero.</span></label></li>
+</ul>
+
+<h2>Track A — Recursion reactivation <span class="sub">(do FIRST, ~3–5 days)</span></h2>
+<p class="sub">DP's prerequisite. Get fluent here before the DP series makes sense.</p>
+<ul class="items" data-section="trackA">
+  <li><label><input type="checkbox"><span>Recursion basics: factorial, power, reverse, subsequences</span></label></li>
+  <li><label><input type="checkbox"><span>Subsets / subsequences (pick / not-pick template)</span></label></li>
+  <li><label><input type="checkbox"><span>Permutations</span></label></li>
+  <li><label><input type="checkbox"><span>Combination sum I &amp; II</span></label></li>
+  <li><label><input type="checkbox"><span>Backtracking: N-Queens, Rat in a Maze, word search</span></label></li>
+  <li><label><input type="checkbox"><span>Can you write the pick/not-pick recursion for any subset problem without thinking? → then DP is unlocked</span></label></li>
+</ul>
+
+<h2>Track B — DP <span class="sub">(daily habit anchor, the 60-day window)</span></h2>
+<p class="sub">Follow Striver's DP playlist order. Small daily dose, every day.</p>
+<ul class="items" data-section="trackB">
+  <li><label><input type="checkbox"><span>1D DP: climbing stairs, house robber, frog jump</span></label></li>
+  <li><label><input type="checkbox"><span>Grid DP: unique paths, min path sum, triangle</span></label></li>
+  <li><label><input type="checkbox"><span>Subsequence DP: subset sum, partition equal subset, target sum</span></label></li>
+  <li><label><input type="checkbox"><span>Knapsack family: 0/1 knapsack, coin change I &amp; II, rod cutting</span></label></li>
+  <li><label><input type="checkbox"><span>String DP: LCS, longest common substring, edit distance, LPS</span></label></li>
+  <li><label><input type="checkbox"><span>Stock problems (the full ladder, I → VI)</span></label></li>
+  <li><label><input type="checkbox"><span>LIS + variants (print LIS, largest divisible subset)</span></label></li>
+  <li><label><input type="checkbox"><span>Partition DP / MCM: matrix chain, palindrome partitioning II</span></label></li>
+  <li><label><input type="checkbox"><span>DP on squares/grids: maximal rectangle, count square submatrices</span></label></li>
+  <li><label><input type="checkbox"><span>Milestone: pick a random DP medium you haven't seen → can you identify the pattern in &lt;5 min?</span></label></li>
+</ul>
+
+<h2>Track C — High-frequency fundamentals <span class="sub">(run alongside DP)</span></h2>
+<p class="sub">These appear in screens more than DP does. Don't neglect for DP.</p>
+<ul class="items" data-section="trackC">
+  <li><label><input type="checkbox"><span>Arrays &amp; Hashing (frequency maps, prefix sums)</span></label></li>
+  <li><label><input type="checkbox"><span>Two Pointers</span></label></li>
+  <li><label><input type="checkbox"><span>Sliding Window (fixed + variable)</span></label></li>
+  <li><label><input type="checkbox"><span>Binary Search (on answer space, not just sorted arrays)</span></label></li>
+  <li><label><input type="checkbox"><span>Stack / Monotonic stack (next greater element, histogram)</span></label></li>
+  <li><label><input type="checkbox"><span>Linked List (reversal, cycle detection, merge)</span></label></li>
+  <li><label><input type="checkbox"><span>Trees: traversals, BST ops, LCA, diameter, views</span></label></li>
+  <li><label><input type="checkbox"><span>Heaps / Priority Queue (top-K, merge-K, median stream)</span></label></li>
+  <li><label><input type="checkbox"><span>Intervals (merge, insert, non-overlapping)</span></label></li>
+</ul>
+
+<h2>Track D — Graphs <span class="sub">(start after fundamentals feel solid)</span></h2>
+<p class="sub">High-value for both interviews and your data-systems background.</p>
+<ul class="items" data-section="trackD">
+  <li><label><input type="checkbox"><span>BFS / DFS (grid + adjacency)</span></label></li>
+  <li><label><input type="checkbox"><span>Connected components / flood fill</span></label></li>
+  <li><label><input type="checkbox"><span>Topological sort (Kahn's + DFS) — ties to your DAG/pipeline intuition</span></label></li>
+  <li><label><input type="checkbox"><span>Union-Find (with path compression)</span></label></li>
+  <li><label><input type="checkbox"><span>Shortest path: Dijkstra, Bellman-Ford basics</span></label></li>
+  <li><label><input type="checkbox"><span>MST: Prim's / Kruskal's (awareness level)</span></label></li>
+</ul>
+
+<h2>Track E — DDIA <span class="sub">(light sectionwise, priority order)</span></h2>
+<p class="sub">Read for understanding, not completion. These carry system-design rounds.</p>
+<ul class="items" data-section="trackE">
+  <li><label><input type="checkbox"><span>Ch 1 — Reliability, Scalability, Maintainability (the vocabulary)</span></label></li>
+  <li><label><input type="checkbox"><span>Ch 3 — Storage &amp; Retrieval (LSM-trees, B-trees, column stores) ← maps to BigQuery/Iceberg</span></label></li>
+  <li><label><input type="checkbox"><span>Ch 5 — Replication</span></label></li>
+  <li><label><input type="checkbox"><span>Ch 6 — Partitioning</span></label></li>
+  <li><label><input type="checkbox"><span>Ch 7 — Transactions (isolation levels)</span></label></li>
+  <li><label><input type="checkbox"><span>Ch 10 — Batch processing ← your day job</span></label></li>
+  <li><label><input type="checkbox"><span>Ch 11 — Stream processing ← your day job</span></label></li>
+  <li><label><input type="checkbox"><span>Ch 9 — Consistency &amp; Consensus (later, denser)</span></label></li>
+</ul>
+
+<h2>Weekly rhythm</h2>
+<ul class="items" data-section="weekly">
+  <li><label><input type="checkbox"><span>Recursion + DP daily (Tracks A→B)</span></label></li>
+  <li><label><input type="checkbox"><span>Fundamentals/graphs a few times a week (Tracks C→D)</span></label></li>
+  <li><label><input type="checkbox"><span>One DDIA section per week (Track E)</span></label></li>
+  <li><label><input type="checkbox"><span>End of each week: re-solve 2–3 from the missed list, cold</span></label></li>
+</ul>
+
+<hr>
+
+<p><button id="reset" type="button">Reset all checkboxes</button></p>
+
+<footer>
+  <p>No trackers. No frameworks. Just HTML. Part of <a href="../../">sites.debarghyamondal.dev</a>.</p>
+</footer>
+
+<script>
+(function () {
+  var KEY = 'dsa-system-design-prep:checked';
+  var boxes = Array.prototype.slice.call(document.querySelectorAll('.items input[type="checkbox"]'));
+
+  function load() {
+    try { return JSON.parse(localStorage.getItem(KEY) || '[]'); }
+    catch (e) { return []; }
+  }
+  function save(state) {
+    try { localStorage.setItem(KEY, JSON.stringify(state)); }
+    catch (e) {}
+  }
+  function currentState() {
+    return boxes.map(function (b) { return b.checked; });
+  }
+  function updateProgress() {
+    var total = boxes.length;
+    var done = boxes.filter(function (b) { return b.checked; }).length;
+    document.getElementById('progress-text').textContent = done + ' / ' + total + ' checked';
+    document.getElementById('progress-bar').style.width = (total ? (done / total * 100) : 0) + '%';
+  }
+  function applyLineThrough(box) {
+    var span = box.parentElement.querySelector('span');
+    if (span) span.classList.toggle('done', box.checked);
+  }
+
+  var saved = load();
+  boxes.forEach(function (b, i) {
+    if (saved[i]) { b.checked = true; }
+    applyLineThrough(b);
+    b.addEventListener('change', function () {
+      applyLineThrough(b);
+      save(currentState());
+      updateProgress();
+    });
+  });
+  updateProgress();
+
+  document.getElementById('reset').addEventListener('click', function () {
+    if (!confirm('Reset all checkboxes?')) return;
+    boxes.forEach(function (b) { b.checked = false; applyLineThrough(b); });
+    save(currentState());
+    updateProgress();
+  });
+})();
+</script>
+
+</body>
+</html>
